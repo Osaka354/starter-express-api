@@ -3,7 +3,7 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    return res.send(req.ip)
+    return res.send(req.socket.remoteAddress)
 })
 
 app.get('/headers', (req, res) => {
