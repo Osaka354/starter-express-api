@@ -1,9 +1,11 @@
 const express = require('express')
+const UAParser = require('ua-parser-js')
 const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    return res.send(req.socket.remoteAddress)
+    const parser = new UAParser(req.headers["user-agent"])
+    res.json(parser.getResult())
 })
 
 app.get('/headers', (req, res) => {
